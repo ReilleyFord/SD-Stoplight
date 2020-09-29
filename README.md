@@ -1,49 +1,26 @@
-# SDUnlocker
-This is a recompiling of SDLocker-2.1.
-Compiled on `Ubuntu` with `avr-gcc` using `avr-libc` library.
-Features will be added slowly, as well as the removal of certain aspects
-of the original created program.
-Work in Progress.
-If you're not Reilley Ford. You should not be seeing this.
+# SD Stoplight #
+- - - -
+
+#### Setup ####
+This is a program written in `C` and compiled via `AVR-GCC` for the Microchip `ATTiny804`  
+The `ATTiny804` was flashed using `avrdude` and an Arduino UNO as a UPDI programmer  
+The Arduino programmer was setup using JTAG2UPDI created by ElTangas.  
+
+Link to repo: https://github.com/ElTangas/jtag2updi  
+
+There are no non-standard libraries used, everything is coded using standard C and AVR-GCC libraries. 
+
+### Introduction ###
+This program is used to identify SD Cards CMD42 lock status. It is part of a suite of tools used for  
+MMC/SD Card serial communication. Sending MMC specific commands and reading responses returned from  
+the card or device itself. All transactions are done via the SPI (Serial Peripheral Interface).   
+
+When powered on the code will run in a loop polling for a button press. Once the button is pressed a LED startup sequence
+is run. Then the process begins. The SPI protocol is enabled and power is sent to the SD card reader. A initialization 
+command is run and if the card cannot be detected or the card fails initialization the program will end and the `Yellow`  
+LED will be turned on. If the initialization passes, the code will run further commands to prep the card for a read of the 
+password status register. If the card is unlocked the `Green` LED will be turned on. If the card is locked the `Red` LED
+will be turned on. Fairly simple program, the tool is used for verification of lock status.
 
 
-All credit for this project goes to `Eugene Lipchansky`
-or `NSky` as per his Github username. Credit also goes to his
-list of contributors.
-
-`Get thee gone, and take thy due place!`
-
-# Original README File. Keeping for the sake of preservation
-# SDLocker-2.1
-A custom firmware for SDLocker 2 (Atmega328p) device
-
-
-This project is an extension of the SDLocker 2 firmware that makes it possible
-to unlock SD cards protected by an unknown (or forgotten) password.
-Additionally, the UART library missing from the original sources was reconstructed.
-Code::Blocks IDE project files included.
-
-
-Example of use:
-The genuine multimedia system of many Mitsubishi vehicles contains navigation
-maps on a SD card. It's possible to update those maps by inserting SD containing
-newer maps. But after that the SD card is locked (password protected)
-and not accessible by any other SD-compliant device. The password is not known.
-This firmware extends the original SDLocker 2 with a feature to reset the password.
-
-BE AWARE THAT IN RESULT ALL CONTENTS OF SD IS ERASED DUE TO SECURITY REASONS
-
-
-How to use:
-- read about the original device by the link below.
-- flash the firmware
-- insert a locked SD and turn power on
-- press PWD for at least 10 seconds to ERASE SD and RESET THE PASSWORD
-- create partition on the SD
-
-
-The original SDLocker 2 project:
-http://www.seanet.com/~karllunt/sdlocker2.html
-
-UART source code was taken from here:
-https://www.appelsiini.net/2011/simple-usart-with-avr-libc
+Created by Reilley Ford
