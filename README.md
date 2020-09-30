@@ -1,5 +1,4 @@
 # SD Stoplight #
-- - - -
 
 #### Setup ####
 This is a program written in `C` and compiled via `AVR-GCC` for the Microchip `ATTiny804`  
@@ -9,6 +8,8 @@ The Arduino programmer was setup using JTAG2UPDI created by ElTangas.
 Link to repo: https://github.com/ElTangas/jtag2updi  
 
 There are no non-standard libraries used, everything is coded using standard C and AVR-GCC libraries. 
+
+- - - -
 
 ### Introduction ###
 This program is used to identify SD Cards CMD42 lock status. It is part of a suite of tools used for  
@@ -22,5 +23,12 @@ LED will be turned on. If the initialization passes, the code will run further c
 password status register. If the card is unlocked the `Green` LED will be turned on. If the card is locked the `Red` LED
 will be turned on. Fairly simple program, the tool is used for verification of lock status.
 
+
+Basic Use:
+Plug in SD Card to card reader  
+Press button to begin process 
+LED Conditions:  
+Red LED - Card is locked
+Yellow LED - No Detect/
 
 Created by Reilley Ford
