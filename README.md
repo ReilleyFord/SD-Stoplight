@@ -16,6 +16,7 @@ This program is used to identify SD Cards CMD42 lock status. It is part of a sui
 MMC/SD Card serial communication. Sending MMC specific commands and reading responses returned from  
 the card or device itself. All transactions are done via the SPI (Serial Peripheral Interface).   
 
+### Quick Reference ###
 When powered on the code will run in a loop polling for a button press. Once the button is pressed a LED startup sequence
 is run. Then the process begins. The SPI protocol is enabled and power is sent to the SD card reader. A initialization 
 command is run and if the card cannot be detected or the card fails initialization the program will end and the `Yellow`  
