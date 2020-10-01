@@ -26,9 +26,10 @@ password status register. If the card is unlocked the `Green` LED will be turned
 will be turned on. Fairly simple program, the tool is used for verification of lock status.
 
 
-##### Basic Use: #####
+#### Basic Use: ####
 Plug in SD Card to card reader  
 Press button to begin process 
+
 LED Condition | Card Status
 --------------|------------
 Red LED       | Locked
