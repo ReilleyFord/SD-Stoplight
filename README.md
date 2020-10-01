@@ -1,9 +1,9 @@
 # SD Stoplight #
 
 ### Introduction ###
-This program is used to identify SD Cards CMD42 lock status. It is part of a suite of tools used for  
+This program is used to identify SD Cards `CMD42` lock status. It is part of a suite of tools used for  
 MMC/SD Card serial communication. Sending MMC specific commands and reading responses returned from  
-the card or device itself. All transactions are done via the SPI (Serial Peripheral Interface).   
+the card or device itself. All transactions are done via the `SPI` (Serial Peripheral Interface).   
 
 - - - -
 
@@ -26,11 +26,12 @@ password status register. If the card is unlocked the `Green` LED will be turned
 will be turned on. Fairly simple program, the tool is used for verification of lock status.
 
 
-Basic Use:
+##### Basic Use: #####
 Plug in SD Card to card reader  
 Press button to begin process 
-LED Conditions:  
-Red LED - Card is locked
-Yellow LED - No Detect/
+LED Condition | Card Status
+Red LED       | Locked
+Yellow LED    | No Detect/Card Error
+Green LED     | Unlocked
 
 Created by Reilley Ford
