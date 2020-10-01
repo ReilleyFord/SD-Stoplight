@@ -30,6 +30,7 @@ will be turned on. Fairly simple program, the tool is used for verification of l
 Plug in SD Card to card reader  
 Press button to begin process 
 LED Condition | Card Status
+--------------|------------
 Red LED       | Locked
 Yellow LED    | No Detect/Card Error
 Green LED     | Unlocked
