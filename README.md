@@ -1,5 +1,12 @@
 # SD Stoplight #
 
+### Introduction ###
+This program is used to identify SD Cards CMD42 lock status. It is part of a suite of tools used for  
+MMC/SD Card serial communication. Sending MMC specific commands and reading responses returned from  
+the card or device itself. All transactions are done via the SPI (Serial Peripheral Interface).   
+
+- - - -
+
 #### Setup ####
 This is a program written in `C` and compiled via `AVR-GCC` for the Microchip `ATTiny804`  
 The `ATTiny804` was flashed using `avrdude` and an Arduino UNO as a UPDI programmer  
@@ -9,14 +16,8 @@ Link to repo: https://github.com/ElTangas/jtag2updi
 
 There are no non-standard libraries used, everything is coded using standard C and AVR-GCC libraries. 
 
-- - - -
 
-### Introduction ###
-This program is used to identify SD Cards CMD42 lock status. It is part of a suite of tools used for  
-MMC/SD Card serial communication. Sending MMC specific commands and reading responses returned from  
-the card or device itself. All transactions are done via the SPI (Serial Peripheral Interface).   
-
-### Quick Reference ###
+#### Quick Reference ####
 When powered on the code will run in a loop polling for a button press. Once the button is pressed a LED startup sequence
 is run. Then the process begins. The SPI protocol is enabled and power is sent to the SD card reader. A initialization 
 command is run and if the card cannot be detected or the card fails initialization the program will end and the `Yellow`  
