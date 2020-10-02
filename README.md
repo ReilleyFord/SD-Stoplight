@@ -19,7 +19,7 @@ There are no non-standard libraries used, everything is coded using standard C a
 
 #### Quick Reference ####
 When powered on the code will run in a loop polling for a button press. Once the button is pressed a LED startup sequence  
-is run. Then the process begins. The SPI protocol is enabled and power is sent to the SD card reader. A initialization 
+is run. Then the process begins. The SPI protocol is enabled and power is sent to the SD card reader. A initialization  
 command is run and if the card cannot be detected or the card fails initialization the program will end and  
 the `Yellow` LED will be turned on. If the initialization passes, the code will run further commands to prep the card   
 for a read of the password status register. If the card is unlocked the `Green` LED will be turned on. If the card  
