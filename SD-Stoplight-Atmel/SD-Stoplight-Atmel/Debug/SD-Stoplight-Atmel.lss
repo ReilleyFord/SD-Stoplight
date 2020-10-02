@@ -1,0 +1,294 @@
+
+SD-Stoplight-Atmel.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00803e00  00803e00  000001d8  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000184  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000001d8  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000208  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 00000020  00000000  00000000  00000244  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000015db  00000000  00000000  00000264  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00001443  00000000  00000000  0000183f  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000002aa  00000000  00000000  00002c82  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000048  00000000  00000000  00002f2c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000aad  00000000  00000000  00002f74  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    00000070  00000000  00000000  00003a21  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 00000010  00000000  00000000  00003a91  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	1e c0       	rjmp	.+60     	; 0x3e <__ctors_end>
+   2:	2d c0       	rjmp	.+90     	; 0x5e <__bad_interrupt>
+   4:	2c c0       	rjmp	.+88     	; 0x5e <__bad_interrupt>
+   6:	2b c0       	rjmp	.+86     	; 0x5e <__bad_interrupt>
+   8:	2a c0       	rjmp	.+84     	; 0x5e <__bad_interrupt>
+   a:	29 c0       	rjmp	.+82     	; 0x5e <__bad_interrupt>
+   c:	28 c0       	rjmp	.+80     	; 0x5e <__bad_interrupt>
+   e:	27 c0       	rjmp	.+78     	; 0x5e <__bad_interrupt>
+  10:	26 c0       	rjmp	.+76     	; 0x5e <__bad_interrupt>
+  12:	25 c0       	rjmp	.+74     	; 0x5e <__bad_interrupt>
+  14:	24 c0       	rjmp	.+72     	; 0x5e <__bad_interrupt>
+  16:	23 c0       	rjmp	.+70     	; 0x5e <__bad_interrupt>
+  18:	22 c0       	rjmp	.+68     	; 0x5e <__bad_interrupt>
+  1a:	21 c0       	rjmp	.+66     	; 0x5e <__bad_interrupt>
+  1c:	20 c0       	rjmp	.+64     	; 0x5e <__bad_interrupt>
+  1e:	1f c0       	rjmp	.+62     	; 0x5e <__bad_interrupt>
+  20:	1e c0       	rjmp	.+60     	; 0x5e <__bad_interrupt>
+  22:	1d c0       	rjmp	.+58     	; 0x5e <__bad_interrupt>
+  24:	1c c0       	rjmp	.+56     	; 0x5e <__bad_interrupt>
+  26:	1b c0       	rjmp	.+54     	; 0x5e <__bad_interrupt>
+  28:	1a c0       	rjmp	.+52     	; 0x5e <__bad_interrupt>
+  2a:	19 c0       	rjmp	.+50     	; 0x5e <__bad_interrupt>
+  2c:	18 c0       	rjmp	.+48     	; 0x5e <__bad_interrupt>
+  2e:	17 c0       	rjmp	.+46     	; 0x5e <__bad_interrupt>
+  30:	16 c0       	rjmp	.+44     	; 0x5e <__bad_interrupt>
+  32:	15 c0       	rjmp	.+42     	; 0x5e <__bad_interrupt>
+  34:	14 c0       	rjmp	.+40     	; 0x5e <__bad_interrupt>
+  36:	13 c0       	rjmp	.+38     	; 0x5e <__bad_interrupt>
+  38:	12 c0       	rjmp	.+36     	; 0x5e <__bad_interrupt>
+  3a:	11 c0       	rjmp	.+34     	; 0x5e <__bad_interrupt>
+  3c:	10 c0       	rjmp	.+32     	; 0x5e <__bad_interrupt>
+
+0000003e <__ctors_end>:
+  3e:	11 24       	eor	r1, r1
+  40:	1f be       	out	0x3f, r1	; 63
+  42:	cf ef       	ldi	r28, 0xFF	; 255
+  44:	cd bf       	out	0x3d, r28	; 61
+  46:	df e3       	ldi	r29, 0x3F	; 63
+  48:	de bf       	out	0x3e, r29	; 62
+
+0000004a <__do_clear_bss>:
+  4a:	2e e3       	ldi	r18, 0x3E	; 62
+  4c:	a0 e0       	ldi	r26, 0x00	; 0
+  4e:	be e3       	ldi	r27, 0x3E	; 62
+  50:	01 c0       	rjmp	.+2      	; 0x54 <.do_clear_bss_start>
+
+00000052 <.do_clear_bss_loop>:
+  52:	1d 92       	st	X+, r1
+
+00000054 <.do_clear_bss_start>:
+  54:	a0 30       	cpi	r26, 0x00	; 0
+  56:	b2 07       	cpc	r27, r18
+  58:	e1 f7       	brne	.-8      	; 0x52 <.do_clear_bss_loop>
+  5a:	02 d0       	rcall	.+4      	; 0x60 <main>
+  5c:	91 c0       	rjmp	.+290    	; 0x180 <_exit>
+
+0000005e <__bad_interrupt>:
+  5e:	d0 cf       	rjmp	.-96     	; 0x0 <__vectors>
+
+00000060 <main>:
+static int8_t   InitializeSD(void);
+static int8_t   ReadSD(void);
+static int8_t   ReadStatus(void);
+static int8_t   WaitForData(void);
+
+int main(void) {
+  60:	cf 92       	push	r12
+  62:	df 92       	push	r13
+  64:	ef 92       	push	r14
+  66:	ff 92       	push	r15
+  68:	1f 93       	push	r17
+  6a:	cf 93       	push	r28
+  6c:	df 93       	push	r29
+
+  // First step, enable CS as output.
+  //SD_DDR
+  SPI_DDR |= SD_CS_MASK; // Setting the 2nd pin of PORTB (Chip Select) as output via DDRB
+  6e:	e4 e1       	ldi	r30, 0x14	; 20
+  70:	f4 e0       	ldi	r31, 0x04	; 4
+  72:	20 81       	ld	r18, Z
+  74:	a1 e0       	ldi	r26, 0x01	; 1
+  76:	b4 e0       	ldi	r27, 0x04	; 4
+  78:	4c 91       	ld	r20, X
+  7a:	81 e0       	ldi	r24, 0x01	; 1
+  7c:	90 e0       	ldi	r25, 0x00	; 0
+  7e:	7c 01       	movw	r14, r24
+  80:	02 c0       	rjmp	.+4      	; 0x86 <main+0x26>
+  82:	ee 0c       	add	r14, r14
+  84:	ff 1c       	adc	r15, r15
+  86:	2a 95       	dec	r18
+  88:	e2 f7       	brpl	.-8      	; 0x82 <main+0x22>
+  8a:	97 01       	movw	r18, r14
+  8c:	24 2b       	or	r18, r20
+  8e:	2c 93       	st	X, r18
+
+/*
+ * Flipping CS bit -- De-selecting card.
+ */
+static void Deselect(void) {
+  SD_PORT |= SD_CS_MASK;
+  90:	20 81       	ld	r18, Z
+  92:	e0 e2       	ldi	r30, 0x20	; 32
+  94:	f8 e0       	ldi	r31, 0x08	; 8
+  96:	40 81       	ld	r20, Z
+  98:	bc 01       	movw	r22, r24
+  9a:	02 c0       	rjmp	.+4      	; 0xa0 <main+0x40>
+  9c:	66 0f       	add	r22, r22
+  9e:	77 1f       	adc	r23, r23
+  a0:	2a 95       	dec	r18
+  a2:	e2 f7       	brpl	.-8      	; 0x9c <main+0x3c>
+  a4:	9b 01       	movw	r18, r22
+  a6:	24 2b       	or	r18, r20
+  a8:	20 83       	st	Z, r18
+  // First step, enable CS as output.
+  //SD_DDR
+  SPI_DDR |= SD_CS_MASK; // Setting the 2nd pin of PORTB (Chip Select) as output via DDRB
+  Deselect(); // Make sure card is not selected.
+	
+  SPI_PORT |= ((1<<MOSI) | (1<<SCK));   // Flip bits for MOSI and Serial Clock
+  aa:	61 e1       	ldi	r22, 0x11	; 17
+  ac:	74 e0       	ldi	r23, 0x04	; 4
+  ae:	eb 01       	movw	r28, r22
+  b0:	28 81       	ld	r18, Y
+  b2:	0f 2e       	mov	r0, r31
+  b4:	f3 e1       	ldi	r31, 0x13	; 19
+  b6:	cf 2e       	mov	r12, r31
+  b8:	f4 e0       	ldi	r31, 0x04	; 4
+  ba:	df 2e       	mov	r13, r31
+  bc:	f0 2d       	mov	r31, r0
+  be:	e6 01       	movw	r28, r12
+  c0:	48 81       	ld	r20, Y
+  c2:	10 81       	ld	r17, Z
+  c4:	7c 01       	movw	r14, r24
+  c6:	02 c0       	rjmp	.+4      	; 0xcc <main+0x6c>
+  c8:	ee 0c       	add	r14, r14
+  ca:	ff 1c       	adc	r15, r15
+  cc:	2a 95       	dec	r18
+  ce:	e2 f7       	brpl	.-8      	; 0xc8 <main+0x68>
+  d0:	97 01       	movw	r18, r14
+  d2:	ec 01       	movw	r28, r24
+  d4:	02 c0       	rjmp	.+4      	; 0xda <main+0x7a>
+  d6:	cc 0f       	add	r28, r28
+  d8:	dd 1f       	adc	r29, r29
+  da:	4a 95       	dec	r20
+  dc:	e2 f7       	brpl	.-8      	; 0xd6 <main+0x76>
+  de:	2c 2b       	or	r18, r28
+  e0:	3d 2b       	or	r19, r29
+  e2:	21 2b       	or	r18, r17
+  e4:	20 83       	st	Z, r18
+  SPI_DDR  |= ((1<<MOSI) | (1<<SCK));   // Mark pins as output
+  e6:	eb 01       	movw	r28, r22
+  e8:	28 81       	ld	r18, Y
+  ea:	e6 01       	movw	r28, r12
+  ec:	48 81       	ld	r20, Y
+  ee:	6c 91       	ld	r22, X
+  f0:	7c 01       	movw	r14, r24
+  f2:	02 c0       	rjmp	.+4      	; 0xf8 <main+0x98>
+  f4:	ee 0c       	add	r14, r14
+  f6:	ff 1c       	adc	r15, r15
+  f8:	2a 95       	dec	r18
+  fa:	e2 f7       	brpl	.-8      	; 0xf4 <main+0x94>
+  fc:	97 01       	movw	r18, r14
+  fe:	ec 01       	movw	r28, r24
+ 100:	02 c0       	rjmp	.+4      	; 0x106 <main+0xa6>
+ 102:	cc 0f       	add	r28, r28
+ 104:	dd 1f       	adc	r29, r29
+ 106:	4a 95       	dec	r20
+ 108:	e2 f7       	brpl	.-8      	; 0x102 <main+0xa2>
+ 10a:	2c 2b       	or	r18, r28
+ 10c:	3d 2b       	or	r19, r29
+ 10e:	26 2b       	or	r18, r22
+ 110:	2c 93       	st	X, r18
+  SPI_PORT |= (1<<MISO);                // Flipping MISO bit.
+ 112:	30 91 12 04 	lds	r19, 0x0412	; 0x800412 <__TEXT_REGION_LENGTH__+0x700412>
+ 116:	20 81       	ld	r18, Z
+ 118:	02 c0       	rjmp	.+4      	; 0x11e <main+0xbe>
+ 11a:	88 0f       	add	r24, r24
+ 11c:	99 1f       	adc	r25, r25
+ 11e:	3a 95       	dec	r19
+ 120:	e2 f7       	brpl	.-8      	; 0x11a <main+0xba>
+ 122:	82 2b       	or	r24, r18
+ 124:	80 83       	st	Z, r24
+
+  // Setup hardware lines/pins
+  // Red LED
+  LED_RED_OFF;
+ 126:	c4 e2       	ldi	r28, 0x24	; 36
+ 128:	d4 e0       	ldi	r29, 0x04	; 4
+ 12a:	88 81       	ld	r24, Y
+ 12c:	8d 7f       	andi	r24, 0xFD	; 253
+ 12e:	88 83       	st	Y, r24
+  LED_RED_DDR |= LED_RED_MASK;
+ 130:	a0 e2       	ldi	r26, 0x20	; 32
+ 132:	b4 e0       	ldi	r27, 0x04	; 4
+ 134:	8c 91       	ld	r24, X
+ 136:	82 60       	ori	r24, 0x02	; 2
+ 138:	8c 93       	st	X, r24
+
+  // Green LED
+  LED_GREEN_OFF;
+ 13a:	88 81       	ld	r24, Y
+ 13c:	8b 7f       	andi	r24, 0xFB	; 251
+ 13e:	88 83       	st	Y, r24
+  LED_GREEN_DDR |= LED_GREEN_MASK;
+ 140:	8c 91       	ld	r24, X
+ 142:	84 60       	ori	r24, 0x04	; 4
+ 144:	8c 93       	st	X, r24
+
+  // Yellow LED
+  LED_YELLOW_OFF;
+ 146:	88 81       	ld	r24, Y
+ 148:	87 7f       	andi	r24, 0xF7	; 247
+ 14a:	88 83       	st	Y, r24
+  LED_YELLOW_DDR |= LED_YELLOW_MASK;
+ 14c:	8c 91       	ld	r24, X
+ 14e:	88 60       	ori	r24, 0x08	; 8
+ 150:	8c 93       	st	X, r24
+
+  // Switch setup - Marking as input
+  SW_DDR &= ~SW_MASK;
+ 152:	a1 e2       	ldi	r26, 0x21	; 33
+ 154:	b4 e0       	ldi	r27, 0x04	; 4
+ 156:	8c 91       	ld	r24, X
+ 158:	8e 7f       	andi	r24, 0xFE	; 254
+ 15a:	8c 93       	st	X, r24
+  SW_PIN |= SW_MASK;
+ 15c:	a0 e3       	ldi	r26, 0x30	; 48
+ 15e:	b4 e0       	ldi	r27, 0x04	; 4
+ 160:	8c 91       	ld	r24, X
+ 162:	81 60       	ori	r24, 0x01	; 1
+ 164:	8c 93       	st	X, r24
+   * MSTR - Master/Slave Select. If set Master mode is enabled.
+   * SPR1 - Setting Clock Rate - Multiple options depending on SPX
+   * SPR0 - Setting Clock Rate - SPR0, SPR1 and SPI2X dictate Clock Rate based on which bits are set.
+   * In this configuration Clock Rate is set to fosc/128.
+   */
+  SPI_PORT |= (1<<SPI_ENABLE_bp) | (1<<SPI_MASTER_bp) | (SPI_PRESC_DIV128_gc);
+ 166:	80 81       	ld	r24, Z
+ 168:	87 62       	ori	r24, 0x27	; 39
+ 16a:	80 83       	st	Z, r24
+
+  //while(1) ProcessCommand(); -- DO NOT BEGIN PROCESS UNTIL SETUP IS CONFIRMED WORKING. 
+
+  return 0;
+}
+ 16c:	80 e0       	ldi	r24, 0x00	; 0
+ 16e:	90 e0       	ldi	r25, 0x00	; 0
+ 170:	df 91       	pop	r29
+ 172:	cf 91       	pop	r28
+ 174:	1f 91       	pop	r17
+ 176:	ff 90       	pop	r15
+ 178:	ef 90       	pop	r14
+ 17a:	df 90       	pop	r13
+ 17c:	cf 90       	pop	r12
+ 17e:	08 95       	ret
+
+00000180 <_exit>:
+ 180:	f8 94       	cli
+
+00000182 <__stop_program>:
+ 182:	ff cf       	rjmp	.-2      	; 0x182 <__stop_program>
