@@ -46,11 +46,6 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-#ifndef FALSE
-#define FALSE 0
-#define TRUE !FALSE
-#endif
-
 /*
  * CPU Clock Speed - 16Mhz
  */
@@ -58,12 +53,6 @@
 #undef F_CPU
 #define F_CPU 16000000
 #endif
-
-/*
- * Baudrate setup.
- */
-#define BAUDRATE    38400L
-#define BAUDREG     ((unsigned int)((F_CPU/(BAUDRATE*8UL))-1))
 
 /*
  * SD Card Commands 
@@ -80,9 +69,9 @@
 /*
  * Options for Types of SD cards.
  */
-#define  SDTYPE_UNKNOWN			0				/* card type not determined */
-#define  SDTYPE_SD				1				/* SD v1 (1 MB to 2 GB) */
-#define  SDTYPE_SDHC			2				/* SDHC (4 GB to 32 GB) */
+#define  SDTYPE_UNKNOWN		0	/* card type not determined */
+#define  SDTYPE_SD			1	/* SD v1 (1 MB to 2 GB) */
+#define  SDTYPE_SDHC		2	/* SDHC (4 GB to 32 GB) */
 
 // Error codes for functions
 #define SD_OK         0
@@ -123,14 +112,14 @@
 
 // Definitions for YELLOW LED
 #define LED_YELLOW_DDR   PORTB_DIRSET
-#define LED_YELLOW_BIT   2		      // Set to HIGH when unable to read/damaged card.
+#define LED_YELLOW_BIT   3		      // Set to HIGH when unable to read/damaged card.
 #define LED_YELLOW_MASK (1<<LED_YELLOW_BIT)
 #define LED_YELLOW_OFF  (PORTB_OUTCLR = LED_YELLOW_MASK)
 #define LED_YELLOW_ON   (PORTB_OUTSET |= LED_YELLOW_MASK)
 
 // Definitions for GREEN LED
 #define LED_GREEN_DDR  PORTB_DIRSET
-#define LED_GREEN_BIT  3		       // Set to HIGH when unlocked.
+#define LED_GREEN_BIT  2	       // Set to HIGH when unlocked.
 #define LED_GREEN_MASK (1<<LED_GREEN_BIT)
 #define LED_GREEN_OFF  (PORTB_OUTCLR = LED_GREEN_MASK)
 #define LED_GREEN_ON   (PORTB_OUTSET |= LED_GREEN_MASK)
@@ -198,6 +187,22 @@ int main(void) {
   // Switch setup - Marking as input
   SW_DDR &= ~SW_MASK;
   SW_PIN |= ISC_MASK | PULLUP_MASK; // ISC and Pullup enable. Switch Pin
+
+  LED_GREEN_ON;
+  LED_YELLOW_ON;
+  LED_RED_ON;
+  _delay_ms(500);
+  LED_RED_OFF;
+  LED_YELLOW_OFF;
+  LED_GREEN_OFF;
+  _delay_ms(500);
+  LED_GREEN_ON;
+  LED_YELLOW_ON;
+  LED_RED_ON;
+  _delay_ms(500);
+  LED_RED_OFF;
+  LED_YELLOW_OFF;
+  LED_GREEN_OFF;
  
  // Begin Infinite Loop polling switch to begin processing.
   while(1) {
@@ -205,16 +210,6 @@ int main(void) {
 		LED_RED_OFF;
 		LED_YELLOW_OFF;
 		LED_GREEN_OFF;
-		_delay_ms(500);
-		LED_RED_ON;
-		_delay_ms(1000);
-		LED_YELLOW_ON;
-		_delay_ms(1000);
-		LED_GREEN_ON;
-		_delay_ms(2500);
-		LED_RED_OFF;
-		LED_GREEN_OFF;
-		LED_YELLOW_OFF;
 		ProcessCommand();
 	 }
   }
