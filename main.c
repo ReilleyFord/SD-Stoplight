@@ -5,7 +5,7 @@
 /* SD card CMD42 Interaction via Serial Peripheral Interface (SPI)		  */
 /* This SPI interaction is done from a Hardware Serial connection. In   */
 /* In this case a custom logic board, SD card I/O shield, LED Lights, a */
-/* switch, and an SD card.											                       	*/
+/* switch, and an SD card.												                      */
 /*																		                                  */
 /* This program was developed to validate the presence 	of a CMD42 lock	*/
 /* enabled on an SD card. SD Stoplight will setup the hardware lines,	  */
@@ -31,7 +31,7 @@
 /*	Code developed by:													                        */
 /*	Reilley Ford														                            */
 /*																		                                  */
-/*  Custom Board and Hardware created by:								                 */
+/*  Custom Board and Hardware created by:								                */
 /*  Benjamin Rutledge													                          */
 /*																		                                  */
 /*																		                                  */
@@ -46,24 +46,13 @@
 #include <util/delay.h>
 #include <avr/interrupt.h>
 
-#ifndef FALSE
-#define FALSE 0
-#define TRUE !FALSE
-#endif
-
 /*
  * CPU Clock Speed - 16Mhz
  */
 #ifdef F_CPU
 #undef F_CPU
-#define F_CPU 16000000
+#define F_CPU 16000000L
 #endif
-
-/*
- * Baudrate setup.
- */
-#define BAUDRATE    38400L
-#define BAUDREG     ((unsigned int)((F_CPU/(BAUDRATE*8UL))-1))
 
 /*
  * SD Card Commands
@@ -80,9 +69,9 @@
 /*
  * Options for Types of SD cards.
  */
-#define  SDTYPE_UNKNOWN			0				/* card type not determined */
-#define  SDTYPE_SD				1				/* SD v1 (1 MB to 2 GB) */
-#define  SDTYPE_SDHC			2				/* SDHC (4 GB to 32 GB) */
+#define  SDTYPE_UNKNOWN		0	/* card type not determined */
+#define  SDTYPE_SD			1	/* SD v1 (1 MB to 2 GB) */
+#define  SDTYPE_SDHC		2	/* SDHC (4 GB to 32 GB) */
 
 // Error codes for functions
 #define SD_OK         0
@@ -136,9 +125,9 @@
 #define LED_GREEN_ON   (PORTB_OUTSET |= LED_GREEN_MASK)
 
 // CMDs to run against SD Card
-#define  CMD_NONE		     3
-#define  CMD_INFO		     4
-#define  CMD_READBLK	   5
+#define  CMD_NONE		 3
+#define  CMD_INFO		 4
+#define  CMD_READBLK	 5
 #define  CMD_PWD_CHECK	 8
 #define  CMD_LOCK_CHECK  9
 
@@ -215,6 +204,7 @@ int main(void) {
 		LED_RED_OFF;
 		LED_GREEN_OFF;
 		LED_YELLOW_OFF;
+		_delay_ms(1000);
 		ProcessCommand();
 	 }
   }
